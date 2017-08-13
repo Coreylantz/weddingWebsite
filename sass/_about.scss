@@ -1,0 +1,49 @@
+.about {
+	h2 {
+		color: $rsvp-color;
+	}
+
+	.content {
+		display: flex;
+		justify-content: space-around;
+
+		@media (max-width:600px) {
+			img {
+				display: none;
+			}
+			flex-direction: column;
+
+			.imgContainer {
+				display: block;
+
+				img {
+				display: inline-block;
+			}
+			}
+		}
+	}
+
+	img {
+		width: 33.3%;
+		max-width: 300px;
+		max-height: 300px;
+
+		@media (max-width:768px) {
+			width: 150px;
+			height: 150px;
+		}
+	}
+
+	p {
+		@include centerItem;
+		// padding: 0 20px;
+	}
+
+	a .fa {
+		color: $rsvp-color;
+	}
+
+	.imgContainer {
+		display:none;
+	}
+}

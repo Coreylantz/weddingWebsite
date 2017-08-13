@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'dryBrush';
+  src: url('fonts/Dry Brush.ttf');
+}
+
+@font-face {
+  font-family: 'bristleBrush';
+  src: url('fonts/OSFC-Bristle-Brush-Script-Regular-Demo.ttf');
+}
+
+@font-face {
+  font-family: 'baseNeue';
+  src: url('fonts/BebasNeue.otf');
+}
+
+@font-face {
+  font-family: 'basictitlefont';
+  src: url('fonts/basictitlefont.ttf');
+}
+
+@font-face {
+  font-family: 'frente';
+  src: url('fonts/FrenteH1-Regular.otf');
+}
+
+html {
+	font-size: 10px;
+}
+
+a {
+	color: #BA209B;
+	text-decoration: none;
+	&:hover {
+		color: #D424B1;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+h2 {
+	font-size: 9rem;
+	text-transform: uppercase;
+	font-family: 'baseNeue';
+	margin: 0;
+}
+
+h3 {
+	font-family: 'baseNeue';
+}
+
+/* paragraphs */
+
+p {
+	line-height: 1.5;
+	font-family: 'Crimson Text', serif;
+	font-size: 1.7rem;
+}
+
+a .fa {
+	font-size: 7rem;
+	color: #fff;
+	transition: all 0.3s ease;
+
+	&:hover{
+		color: #fff;
+		text-shadow: 0px 2px 2px #000;
+	}
+}
+
+.clip {
+    // font-size: 6em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    // display: inline-block;
+    background-image: url('images/titleBackground.png');
+    background-attachment: fixed;
+    text-align: center;
+    /* Color fallback */
+    color: #fff;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.clip:before,
+.clip:after {
+    position: absolute;
+    content: '';
+}
+
+/* Background */
+.clip:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+}
+
+/* Text Background (black zone) */
+.clip:after {
+    position: absolute;
+    z-index: -1;
+    // top: .125em;
+    // right: .125em;
+    // bottom: .125em;
+    // left: .125em;
+    background-color: #000;
+}
+
+/*blockquotes*/
+
+blockquote {
+	background: #F7F7F7;
+	margin: 0;
+	padding: 20px;
+	p {
+		margin-top: 0;
+	}
+}
+
+/*tables*/
+
+table {
+	td {
+		padding: 10px;
+	}
+	tr td:first {
+		padding-right: 0;
+	}
+}
+
+/*def lists*/
+
+dt {
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+dd {
+	padding: 10px;
+	margin-left: 10px;
+}
+
+/*lists*/
+
+ul li, ol li {
+	padding: 3px;
+}
+
+/*PRE*/
+
+pre {
+	background: #F7F7F7;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+
+/*
+====================================
+Global Classes / Wordpress Specific
+====================================
+*/
+
+.aligncenter {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+img {
+	&.alignleft {
+		padding-right: 5px;
+	}
+	&.alignright {
+		padding-left: 5px;
+	}
+}
+
+.clear {
+	width: 100%;
+	float: left;
+	clear: both;
+}

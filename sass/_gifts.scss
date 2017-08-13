@@ -1,0 +1,16 @@
+.gifts {
+	background: $gift-color;
+	color: $fontColor;
+	
+	.content {
+		width: 50%;
+
+		@media (max-width: 620px) {
+			width: 100%;
+		}
+	}
+
+	h2 {
+		font-size: 10.8rem;
+	}
+}

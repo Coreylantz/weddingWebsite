@@ -1,0 +1,72 @@
+/*!
+* Theme Name: HackerYou Starter Theme
+* Theme URI: http://hackeryou.com;
+* Description: Starter theme for building any website. Created by HackerYou. * Rename this to your own theme page.
+* Version: 1.0
+* Author: HackerYou
+* Author URI: http://hackeryou.com
+*/
+
+@import 'normalize';
+@import 'extends';
+@import 'typography';
+@import 'navigation';
+@import 'sidebar';
+@import 'comments';
+@import 'header';
+@import 'main';
+@import 'about';
+@import 'rsvp';
+@import 'gifts';
+@import 'faq';
+@import 'footer';
+/*
+====================================
+Default Styling
+====================================
+*/
+
+img {
+	max-width: 100%;
+}
+
+body {
+	color: #333;
+	text-align: center;
+}
+
+.container {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.content {
+	padding: 0 5%;
+	@media(max-width:335px) {
+		padding: 0 2%;
+	}
+}
+
+.full {
+	width: 100%;
+}
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}
+
+
+
+
+
+
+
+

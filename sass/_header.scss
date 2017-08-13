@@ -1,0 +1,91 @@
+// @keyframes title {
+//     0% {
+//     	text-shadow:0 0 0px;}
+//     50% {
+//     	text-shadow:0 0 100px;}
+
+//     100% {
+//     	text-shadow:0 0 0px}
+// }
+
+header {
+	height: 100vh;
+}
+
+.head {
+	width: 100%;
+	height: 100%;
+	@include centerItem;
+	flex-direction: column;
+	background-image: url('images/titleBackground.png');
+	background-size: cover;
+	color: $fontColor;
+	padding: 30px;
+	
+	span {
+		font-family: 'dryBrush';
+	}
+
+	.c {
+		position: relative;
+		top: 25px;
+		left: -18px;
+		font-size: 14.5rem;
+	}
+
+	.b {
+		font-size: 10.3rem;
+	}
+
+	.mid {
+		font-family: 'frente';
+		font-size: 5.8rem;
+
+
+	}
+
+	h1 {
+		margin: 0;
+		font-size: 10rem;
+		// filter: brightness(1.1);
+		font-family: 'bristleBrush';
+		// animation-name: title;
+  //   	animation-duration: 8s;
+  //   	animation-iteration-count: infinite;
+  		text-shadow:0 0 100px;
+
+  		@media (max-width: 700px) {
+  			font-size: 8rem;
+  			line-height:134px;
+
+  			.c {
+  				font-size:12.5rem;
+  			}
+			.mid {
+				display: block;
+				font-size:3.8rem;
+				line-height:0;
+			}
+
+			.b {
+				font-size:8.3rem;
+			}
+  		}
+
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 6rem;
+		text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+		font-family: 'basictitlefont';
+
+		@media (max-width: 700px) {
+			font-size: 4.5rem;
+		}
+
+		@media (max-width: 328px) {
+			font-size: 3.5rem;
+		}
+	}
+}
