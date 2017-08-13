@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # HackerYou Starter Theme
 
 This is a simple theme to get you up and running with a new theme in WordPress. 
@@ -17,9 +16,3 @@ gulp.task('bs', function() {
     });
 });
 ```
-
-
-=======
-# weddingWebsite
-Building my wedding website
->>>>>>> 33b658f3a1b05c3d9f4c83b5e8e576e517655b5e
