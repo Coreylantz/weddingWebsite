@@ -11,5 +11,10 @@
 		height: 100vh;
 		padding:0;
 		@include centerItem;
+		flex-direction: column;
+	}
+
+	p, h3 {
+		text-align: left;
 	}
 }

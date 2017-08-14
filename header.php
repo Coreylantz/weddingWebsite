@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> lang="en">
 <head>
 	<?php // Load Meta ?>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -14,7 +14,7 @@
 
 <body <?php body_class(); ?>>
 
-<header>
+<header role="banner" tabindex="1">
   <div class="container head">
     <h1><span class="c">C</span>orey <span class="mid">&</span> <span class="b">B</span>riana</h1>
     <h3>August 4 2018</h3>

@@ -73,6 +73,7 @@ form {
 		font-family: 'Crimson Text', serif;
 		padding-left: 5px;
 		width:100%;
+
 	}
 	input[type="submit"] {
 		font-family: 'basictitlefont';
@@ -90,9 +91,21 @@ form {
     		margin-top: 54px;
     		outline: none;
 	    }
+	}
 
-	 	&:focus {
+	input {
+		transition: all 0.2s;
+
+		&:focus,
+	 	&:hover {
 			outline: none;
+			transform: scale(1.1);
 	 	}
 	}
 }
+
+
+					// <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+					//     <h3><?php the_title(); ?></h3>
+					//     <p><?php the_content(); ?></p>
+					// <?php endwhile; ?>

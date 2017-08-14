@@ -54,6 +54,10 @@ header {
   //   	animation-iteration-count: infinite;
   		text-shadow:0 0 100px;
 
+  		&:focus {
+  			outline: none;
+  		}
+
   		@media (max-width: 700px) {
   			font-size: 8rem;
   			line-height:134px;

@@ -35,6 +35,12 @@ body {
 	text-align: center;
 }
 
+section {
+	&:focus {
+		outline: none;
+	}
+}
+
 .container {
 	max-width: 1280px;
 	margin: 0 auto;

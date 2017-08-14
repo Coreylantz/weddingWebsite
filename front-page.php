@@ -1,6 +1,6 @@
 <?php ?>
 <?php get_header(); ?>
-	<div class="navBar">
+	<div class="navBar" role="navigation">
 		<div class="hamContainer">
 			<div class="hamburger">
 				<span class="line line-1"></span>
@@ -17,10 +17,10 @@
 		</ul>	
 	</div>
 
-	<div class="main">
+	<div class="main" role="main">
 		<div class="container">
 			
-			<section id="about" class="about">
+			<section id="about" class="about" tabindex="1">
 				<h2>About Us</h2>
 				<div class="content">
 					<img src="wp-content/themes/wordpressWedding/images/briana.png" alt="Briana's caricature">
@@ -35,7 +35,7 @@
 				<a href="#rsvp"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 			
-			<section id="rsvp" class="rsvp">
+			<section id="rsvp" class="rsvp" tabindex="1">
 
 				<div class="content">
 					<div class="imgContainer">
@@ -52,28 +52,45 @@
 				<div class="content">
 					
 					<form id="rsvpForm">
-						<input id="inputName" type="text" placeholder="Enter your name">
-						<input type="submit">
+						<label for="inputName">Enter your name:</label>
+						<input id="inputName" type="text" placeholder="" tabindex="1">
+						<input type="submit" tabindex="1">
 					</form>
 				</div>
 				<a href="#gifts"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 
-			<section id="gifts" class="gifts">
+			<section id="gifts" class="gifts" tabindex="1">
 				<h2>Gifts</h2>
+				<p>Monetary gifts are preferred. However if you would like to purchase a gift, registries can be found at the websites below.</p>
 				<div class="content">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis temporibus, dolorem eaque sunt harum illum dignissimos excepturi! Quod, aut ad dolor iusto animi earum in, ullam expedita magni nobis. Fugit.</p>
+						<?php $new_query = new WP_Query('post_type=gifts&posts_per_page=-1'); 
+							while ($new_query->have_posts()) : $new_query->the_post();
+						?>
+							<div class="registryItem">
+								<a href="<?php echo the_field('gift_registry') ?>" target="_blank" rel="noopener" tabindex="1">
+									<?php the_post_thumbnail('thumbnail')?>
+									<h3><?php the_title() ?></h3>
+								</a>
+							</div>
+						<?php endwhile; ?>
 				</div>
 				<a href="#faq"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 
-			<section id="faq" class="faq">
+			<section id="faq" class="faq" tabindex="1">
 				<div class="content">
-					<h2 class="clip">FAQ</h2>
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				<!-- needs to be in content for knockout text to work -->
+				<h2 class="clip">FAQ</h2>
+					<div>
+						<?php $new_query = new WP_Query('post_type=faq&posts_per_page=-1'); 
+							while ($new_query->have_posts()) : $new_query->the_post();
+						?>
+							<h3><?php the_title() ?></h3>
+							<p><?php the_content() ?></p>
+						<?php endwhile; ?>
 
-					<?php endwhile; else : ?><p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-	<?php endif; ?>
+					</div>
 				</div>
 			</section>
 		</div> <!-- /.container -->
