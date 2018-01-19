@@ -7,3 +7,12 @@
 $rsvp-color: #E6C5B2;
 $gift-color: #283141;
 $fontColor: #FFFEFB;
+
+.hiddenScreen {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}

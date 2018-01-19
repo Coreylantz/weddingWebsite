@@ -57,6 +57,23 @@ section {
 	width: 100%;
 }
 
+.rsvpList{
+	display:flex;
+	justify-content: space-around;
+	.pilgrim {
+		min-height:100px;
+		li {
+			font-size: 2rem;	
+		}
+	}	
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
 }

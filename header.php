@@ -14,13 +14,13 @@
 
 <body <?php body_class(); ?>>
 
-<header role="banner" tabindex="1">
+<header role="banner">
   <div class="container head">
     <h1><span class="c">C</span>orey <span class="mid">&</span> <span class="b">B</span>riana</h1>
     <h3>August 4 2018</h3>
-    <h4 class="countdown"></h4>
+    <h4 class="countdown" aria-hidden="true"></h4>
 
-    <a href="#about"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <a href="#about"><span class="hiddenScreen">Skip down to next section</span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
   </div> <!-- /.container -->
 </header><!--/.header-->
 

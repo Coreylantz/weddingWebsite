@@ -1,6 +1,6 @@
 <?php ?>
 <?php get_header(); ?>
-	<div class="navBar" role="navigation">
+	<nav class="navBar" role="navigation">
 		<div class="hamContainer">
 			<div class="hamburger">
 				<span class="line line-1"></span>
@@ -10,32 +10,32 @@
 		</div>
 		<ul class="menu">
 			<!-- <li><a href="#about" class="navLink">Home</a></li> -->
-			<li><a href="#about" class="navLink">About</a></li>
-			<li><a href="#rsvp" class="navLink">RSVP</a></li>
-			<li><a href="#gifts" class="navLink">Gifts</a></li>
-			<li><a href="#faq" class="navLink">FAQ</a></li>
+			<li><a tabindex="1" href="#about" class="navLink">About</a></li>
+			<li><a tabindex="1" href="#rsvp" class="navLink">RSVP</a></li>
+			<li><a tabindex="1" href="#gifts" class="navLink">Gifts</a></li>
+			<li><a tabindex="1" href="#faq" class="navLink">FAQ</a></li>
 		</ul>	
-	</div>
+	</nav>
 
 	<div class="main" role="main">
 		<div class="container">
 			
-			<section id="about" class="about" tabindex="1">
+			<section id="about" class="about">
 				<h2>About Us</h2>
 				<div class="content">
-					<img src="wp-content/themes/wordpressWedding/images/briana.png" alt="Briana's caricature">
+					<img src="wp-content/themes/wordpressWedding/images/briana.png" alt>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur repudiandae dolore quae, soluta dicta voluptatum inventore ea sunt, repellendus possimus laborum necessitatibus illum cupiditate. Perferendis dolorem dolor tempora magnam ipsum.</p>
-					<img src="wp-content/themes/wordpressWedding/images/corey.png" alt="Corey's caricature">
+					<img src="wp-content/themes/wordpressWedding/images/corey.png" alt>
 
 					<div class="imgContainer">
-						<img src="wp-content/themes/wordpressWedding/images/briana.png" alt="Briana's caricature">
-						<img src="wp-content/themes/wordpressWedding/images/corey.png" alt="Corey's caricature">
+						<img src="wp-content/themes/wordpressWedding/images/briana.png" alt="Cartoon caricature of Briana smiling">
+						<img src="wp-content/themes/wordpressWedding/images/corey.png" alt="Cartoon caricature of Corey smiling">
 					</div>
 				</div>
-				<a href="#rsvp"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				<a href="#rsvp"><span class="hiddenScreen">Skip down to next section</span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 			
-			<section id="rsvp" class="rsvp" tabindex="1">
+			<section id="rsvp" class="rsvp">
 
 				<div class="content">
 					<div class="imgContainer">
@@ -52,15 +52,32 @@
 				<div class="content">
 					
 					<form id="rsvpForm">
-						<label for="inputName">Enter your name:</label>
-						<input id="inputName" type="text" placeholder="" tabindex="1">
-						<input type="submit" tabindex="1">
+						<fieldset>
+							<label for="inputFirstName">First name:</label>
+							<input id="inputFirstName" type="text" placeholder="Briana">
+						</fieldset>
+						<fieldset>
+							<label for="inputLastName">Last name:</label>
+							<input id="inputLastName" type="text" placeholder="Lantz">
+						</fieldset>
+
+						<input type="submit" for="rsvpForm">
 					</form>
+					
+					<form id="alsoRSVP" class="hidden">
+						<h4>Do you also want to RSVP for?</h4>
+						
+    					
+    					<input type="submit" for="alsoRSVP">
+					</form>
+
+					<h4 id="confirmation" class="hidden"></h4>
+
 				</div>
-				<a href="#gifts"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				<a href="#gifts"><span class="hiddenScreen">Skip down to next section</span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 
-			<section id="gifts" class="gifts" tabindex="1">
+			<section id="gifts" class="gifts">
 				<h2>Gifts</h2>
 				<p>Monetary gifts are preferred. However if you would like to purchase a gift, registries can be found at the websites below.</p>
 				<div class="content">
@@ -68,17 +85,17 @@
 							while ($new_query->have_posts()) : $new_query->the_post();
 						?>
 							<div class="registryItem">
-								<a href="<?php echo the_field('gift_registry') ?>" target="_blank" rel="noopener" tabindex="1">
+								<a href="<?php echo the_field('gift_registry') ?>" target="_blank" rel="noopener">
 									<?php the_post_thumbnail('thumbnail')?>
 									<h3><?php the_title() ?></h3>
 								</a>
 							</div>
 						<?php endwhile; ?>
 				</div>
-				<a href="#faq"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				<a href="#faq"><span class="hiddenScreen">Skip down to next section</span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 
-			<section id="faq" class="faq" tabindex="1">
+			<section id="faq" class="faq">
 				<div class="content">
 				<!-- needs to be in content for knockout text to work -->
 				<h2 class="clip">FAQ</h2>
@@ -95,4 +112,7 @@
 			</section>
 		</div> <!-- /.container -->
 	</div> <!-- /.main -->
+
+<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+
 <?php get_footer(); ?>

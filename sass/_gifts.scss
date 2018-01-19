@@ -1,6 +1,7 @@
 .gifts {
 	background: $gift-color;
 	color: $fontColor;
+	padding: 10px;
 	
 	.content {
 		width: 80%;
@@ -10,7 +11,7 @@
 
 		@media (max-width: 620px) {
 			width: 100%;
-			justify-content: center;
+			justify-content: space-around;
 			align-items: center;
 
 		}
