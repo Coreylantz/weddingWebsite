@@ -158,7 +158,8 @@ function updateRsvpList(id, i) {
   forWho = id[4];
   // console.log(person);
   person.update({
-    2: true
+    2: true,
+    5 : true
   });
   var associate = id[3].associated;
   // console.log(rsvpList[associate]);
@@ -173,27 +174,26 @@ function updateRsvpList(id, i) {
 function offerAssociates(associateArr) {
 
   var $fieldset = $("<fieldset>");
+      $fieldset.attr({id: 'otherRSVP'});
 
   for (var i = 0; i < associateArr.length; i++) {
-    var associateId = associateArr[i];
-    if (associateId[2] === false) {
+      var associateId = associateArr[i];
       var person = rsvpList[associateId];
-      var personName = person[0] + " " + person[1] + " ";
-      var personId = person[0] + person[1];
-      
-      //Create the label element
-      var $label = $("<label>");
-      $label.text(personName);
-      $label.attr({for: personId})
-      $label.appendTo($fieldset);
-      //Create the input element
-      var $input = $('<input type="checkbox">').attr({id: personId, name: 'rsvp'});
-      $input.data('id', associateId);
-      $input.appendTo($fieldset);
+      if (person[2] === false) {
+        var personName = person[0] + " " + person[1] + " ";
+        var personId = person[0] + person[1];
+        
+        //Create the label element
+        var $label = $("<label>");
+        $label.text(personName);
+        $label.attr({for: personId})
+        $label.appendTo($fieldset);
+        //Create the input element
+        var $input = $('<input type="checkbox">').attr({id: personId, name: 'rsvp'});
+        $input.data('id', associateId);
+        $input.appendTo($fieldset);
+      }
 
-    } else {
-
-    }
   }
 
   $fieldset.insertAfter($('#alsoRSVP h4'));
@@ -201,7 +201,7 @@ function offerAssociates(associateArr) {
   $( "#rsvpForm" ).hide(500, function(){
     $( "#rsvpForm" ).toggleClass('hidden');
 
-    if ($('#alsoRSVP fieldset').length === 0) {
+    if ($('#alsoRSVP fieldset').children().length === 0) {
       showConfirmation(forWho);
     } else {
       $('#alsoRSVP').show(500, function(){
@@ -219,7 +219,8 @@ function offerAssociates(associateArr) {
       rsvpSessionNames.push(personName);
       var person = ref.child(val.toString());
           person.update({
-            2: true
+            2: true,
+            5 : true
           });
       });
 
@@ -232,7 +233,7 @@ function offerAssociates(associateArr) {
 
 function showConfirmation(name) {
   if (rsvpSessionNames.length === 1) {
-    $('#confirmation').text("Yay, " + rsvpSessionNames[0] + ", did it!");
+    $('#confirmation').text("Yay, " + rsvpSessionNames[0] + ", you are RSVP'D!");
   } else if (rsvpSessionNames.length > 1) {
     var start = "Yay, ";
     var end = " are RSVP'D!";
@@ -247,6 +248,10 @@ function showConfirmation(name) {
   $('#confirmation').show(500, function(){
     $('#confirmation').toggleClass('hidden');
   });
+  
+  $('html, body').animate({
+      scrollTop: $("#rsvp").offset().top
+  }, 250);
 
   animateThumb(name);
 }
@@ -269,32 +274,84 @@ function rsvpSubmit() {
     e.preventDefault();
     var firstName = $('#inputFirstName').val().toLowerCase();
     var lastName = $('#inputLastName').val().toLowerCase();
-
+    var coming = $('input[type=radio]:checked').val();
     var fullName = firstName + ' ' + lastName;
     
     var person = keys.map(function(key, i){
-    var singlePerson = rsvpList[key];
-      
-      var matchedPerson = singlePerson[0] + ' ' + singlePerson[1];
-    
-      if (matchedPerson === fullName) {
+      var singlePerson = rsvpList[key];
         
+      var matchedPerson = singlePerson[0] + ' ' + singlePerson[1];
+      
+      if (matchedPerson === fullName) {
+        if (coming === 'true') {
           if (singlePerson[2]) {
             showConfirmation();
-            console.log('already rsvp')
+            
           } else {
             rsvpSessionNames.push(matchedPerson);
             updateRsvpList(singlePerson, i);
           }
-      }
+        } else {
+            var notComingPerson = ref.child(i.toString());
+              
+          // console.log(person);
+            notComingPerson.update({
+              5 : false
+            });
+
+            cantAttened(0);
+          } 
+        } else {
+          if (!searchTree(firstName, 0) || !searchTree(lastName, 1)) {
+            console.log(searchTree(firstName, 0));
+            console.log(searchTree(lastName, 0));
+            cantAttened(1);
+          }
+        }
+
+  
 
     });
 
   });
 }
 
-  // INIT
+function searchTree(name, num){
+     
+  for(i=0; i < rsvpList.length; i++){
+       result = rsvpList[i];
+       if (result[num] === name) {
+        return true;
+       }
+  }
+  return false;
+}
 
+
+function cantAttened(num) {
+  $( "#rsvpForm" ).hide(500, function(){
+    $( "#rsvpForm" ).toggleClass('hidden');
+    if (num === 0) {
+      $('#confirmation').text("We are :'c that you can't be there");
+      $('#confirmation').show(500);
+    
+    } if (num === 1) {
+      $('#confirmation').text("Something went wrong with our list. Do you want to try again?");
+      $('#confirmation').show(500);
+      $('#restart').show(500, function(){
+        $('#tryAgain').on('click', function(){
+          $('#restart').hide(500);
+          $('#restart').toggleClass('hidden');
+          $('#confirmation').hide();
+          $('#rsvpForm').show(500);
+        });
+      });
+      $( "#restart" ).toggleClass('hidden');
+    }
+  });
+}
+
+  // INIT
 function init() {
 
   getGuestList(ref);

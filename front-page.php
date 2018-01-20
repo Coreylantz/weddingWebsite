@@ -24,7 +24,7 @@
 				<h2>About Us</h2>
 				<div class="content">
 					<img src="wp-content/themes/wordpressWedding/images/briana.png" alt>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur repudiandae dolore quae, soluta dicta voluptatum inventore ea sunt, repellendus possimus laborum necessitatibus illum cupiditate. Perferendis dolorem dolor tempora magnam ipsum.</p>
+					<p>Remember those walls I built? Well, baby they’re tumbling down and they didn’t even put up a fight, they didn’t even make a sound. ~Beyonce (Halo)</p>
 					<img src="wp-content/themes/wordpressWedding/images/corey.png" alt>
 
 					<div class="imgContainer">
@@ -60,6 +60,13 @@
 							<label for="inputLastName">Last name:</label>
 							<input id="inputLastName" type="text" placeholder="Lantz">
 						</fieldset>
+						<fieldset class="radio">
+							<h4>Are you able to attend?</h4>
+							<input name="attending" type="radio" id="yes" value="true">
+							<label for="yes">Be there :)</label>
+							<input name="attending" type="radio" id="no" value="false">
+							<label for="no">Be square :c</label>
+						</fieldset>
 
 						<input type="submit" for="rsvpForm">
 					</form>
@@ -72,15 +79,17 @@
 					</form>
 
 					<h4 id="confirmation" class="hidden"></h4>
-
+					<div id="restart" class="hidden">
+						<button type="button" id="tryAgain">Try again?</button>
+					</div>
 				</div>
 				<a href="#gifts"><span class="hiddenScreen">Skip down to next section</span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			</section>
 
 			<section id="gifts" class="gifts">
 				<h2>Gifts</h2>
-				<p>Monetary gifts are preferred. However if you would like to purchase a gift, registries can be found at the websites below.</p>
 				<div class="content">
+					<p>Monetary gifts are preferred. However if you would like to purchase a gift, registries can be found at the websites below.</p>
 						<?php $new_query = new WP_Query('post_type=gifts&posts_per_page=-1'); 
 							while ($new_query->have_posts()) : $new_query->the_post();
 						?>

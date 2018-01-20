@@ -7,7 +7,14 @@
 		width: 80%;
 		display: flex;
 	    flex-wrap: wrap;
-	    justify-content: space-between;
+	    justify-content: center;
+
+	    p {
+	    	font-family: basictitlefont;
+    	    font-size: 3rem;
+    	    line-heigt: 1.3;
+    	    text-shadow: 2px 2px 0 rgba(0,0,0,.5);
+	    }
 
 		@media (max-width: 620px) {
 			width: 100%;
@@ -17,7 +24,7 @@
 		}
 		
 		.registryItem {
-			margin: 20px 0;
+			margin: 20px;
 			transition: all 0.3s ease;
 
 			h3 {

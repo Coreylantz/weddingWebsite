@@ -1,7 +1,7 @@
 .rsvp {
 	background: $rsvp-color;
 	color: $fontColor;
-	max-height: 100vh;
+	min-height: 80vh;
 	
 	h2 {
 		font-size: 23.5rem;
@@ -59,12 +59,16 @@
 	.hidden {
 		display: none;
 	}
+
+	#confirmation {
+		margin-bottom: 20px;
+	}
 }
 
 form {
 	width: 70%;
 	height: 100%;
-	padding: 5% 0;
+	padding: 0 0 5%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -101,6 +105,52 @@ form {
 	    }
 	}
 
+	.radio {
+		margin-top: 20px;
+		display: flex;
+	}
+
+	input[type="radio"] {
+		opacity: 0;
+		height: 0;
+		width:0;
+		overflow: hidden;
+
+		&:focus + label {
+
+			outline: none;
+			transform: scale(1.1);
+		}
+	}
+
+	input[type="radio"] + label {
+		position: relative;
+		margin-top: 30px;
+		transition: all 0.2s;
+
+	 	&:hover {
+			outline: none;
+			transform: scale(1.1);
+	 	}
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 10px;
+    		right: -20px;
+			width: 10px;
+			height: 10px;
+			border: 2px solid $gift-color;
+			border-radius: 50%;
+		}
+	}
+
+	input[type="radio"]:checked + label {
+   		&:before {
+			background: $gift-color;
+   		}
+	}
+
 	input {
 		transition: all 0.2s;
 
@@ -109,6 +159,27 @@ form {
 			outline: none;
 			transform: scale(1.1);
 	 	}
+	}
+
+	input[type="checkbox"] {
+		margin-bottom: 10px;
+		margin-right: 20px;
+	}
+}
+
+#restart {
+	width: 100%;
+	button {
+		font-family: 'basictitlefont';
+		padding: 10px 20px 5px;
+		background: #293241;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		border-bottom: 5px solid #1F242E;
+		margin-bottom: 20px;
+		font-size: 3rem;
+	
 	}
 }
 
